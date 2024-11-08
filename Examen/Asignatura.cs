@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Examen
 {
-    public class Asignatura : Alumno, IAsignatura 
+    public class Asignatura : Alumno, IAsignatura
     {
         public int N1 { get; set; }
         public int N2 { get; set; }
@@ -28,16 +23,38 @@ namespace Examen
         if (notaFinal >= 60 && notaFinal < 80) return "Bueno";
         if (notaFinal >= 80 && notaFinal < 90) return "Muy Bueno";
         if (notaFinal >= 92 && notaFinal < 100) return "Sobresaliente";
+        return "Nota fuera de rango";
         }
+
 
         public void Imprimir ()
         {
         double notaFinal1 = CalcularNotaFinal();
         double notaFinal2 = CalcularNotaFinal(N2, N2, N3);
         Console.WriteLine($"Alumno: {NombreAlumno}, Numero de cuenta: {NumeroCuenta}, Email: {Email}");
-        Console.WriteLine($"Asignatura: {NombreAsignatura}, Docente: {NumeroDocente}, Horario: {Horario}");
+        Console.WriteLine($"Asignatura: {NombreAsignatura}, Docente: {NombreDocente}, Horario: {Horario}");
         Console.WriteLine($"Nota Final(sin parametros): {notaFinal1} - {MensajeNotaFinal(notaFinal1)}");
         Console.WriteLine($"Nota Final (con parametros): {notaFinal2} - {MensajeNotaFinal(notaFinal2)}");
+        }
+
+        double IAsignatura.CalcularNotaFinal()
+        {
+            throw new NotImplementedException();
+        }
+
+        double IAsignatura.CalcularPeriodo(int n1, int n2, int n3)
+        {
+            throw new NotImplementedException();
+        }
+
+        string IAsignatura.MensajeNotaFinal(double notaFinal)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IAsignatura.Imprimir()
+        {
+            throw new NotImplementedException();
         }
     }
 }
